@@ -16,6 +16,14 @@
     /* 노트북/데스크탑에서 살짝 낮게 */
 }
 
+@font-face {
+    font-family: 'GreatVibesLocal';
+    src: url('/assets/fonts/GreatVibes-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 html,
 body {
     margin: 0;
@@ -23,7 +31,9 @@ body {
     width: 100%;
     background: var(--page);
     color: var(--ink);
-    font-family: "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-family: "Nanum Myeongjo", "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    overflow-x: hidden;
+    /* 가로 스크롤 제거 */
 }
 
 img {
@@ -73,6 +83,9 @@ img {
 .hero-slider {
     height: 100dvh;
     position: relative;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    width: 100%;
 }
 
 .hero-slider .swiper-slide,
@@ -86,13 +99,14 @@ img {
     object-fit: cover;
     /* 모바일은 화면 꽉 차게 */
     display: block;
+    box-sizing: border-box;
 }
 
 .hero-names {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    gap: 60px;
+    align-items: center;
+    gap: 30px;
     /* 두 이름 사이 간격 크게 */
     margin-bottom: 12px;
     margin-top: 24px;
@@ -103,7 +117,7 @@ img {
 }
 
 .hero-names .ko {
-    font-family: "Nanum Myeongjo", serif;
+    font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
     font-size: 26px;
     letter-spacing: .15rem;
     margin-bottom: 4px;
@@ -113,7 +127,6 @@ img {
     font-family: "Great Vibes", cursive;
     font-size: 22px;
     align-self: center;
-    opacity: .85;
 }
 
 .hero-names .en {
@@ -121,7 +134,6 @@ img {
     justify-content: center;
     gap: 20px;
     font-size: 11px;
-    text-transform: uppercase;
     letter-spacing: .12rem;
     margin-bottom: 8px;
     color: #555;
@@ -132,7 +144,7 @@ img {
     text-align: center;
     font-size: 14px;
     margin-top: 24px;
-    margin-bottom: 12px;
+    margin-bottom: 30px;
     /* 이름 묶음과 충분히 띄우기 */
     line-height: 1.6;
 }
@@ -147,45 +159,6 @@ img {
 .swiper-pagination {
     z-index: 40;
     bottom: 10px !important;
-}
-
-.hero-slider .names {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 16px 0
-}
-
-.hero-slider .ko {
-    font-family: "Nanum Myeongjo", serif;
-    font-size: 26px;
-    letter-spacing: .2rem;
-    text-align: center
-}
-
-.hero-slider .and {
-    font-family: "Great Vibes", cursive;
-    font-size: 20px;
-    color: #333;
-    opacity: .8
-}
-
-.hero-slider .en {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-transform: uppercase;
-    font-size: 10px;
-    color: #555;
-    letter-spacing: .15rem;
-    text-align: center;
-    margin-top: 4px
-}
-
-.hero-slider .meta {
-    text-align: center;
-    font-size: 13px;
-    margin: 12px 0 16px
 }
 
 /* 컨테이너는 기준점 */
@@ -261,10 +234,10 @@ img {
     background: #fff;
     color: #000;
     text-align: center;
-    padding: 32px 16px;
+    padding: 0px 0px;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    margin: 0
+    margin: 0;
 }
 
 .invite .youare {
@@ -273,9 +246,11 @@ img {
     justify-content: center;
     gap: 12px;
     font-family: "Great Vibes", cursive;
-    font-size: 40px;
+    font-size: 30px;
     margin: 0 0 12px 0;
-    color: #000
+    color: #000;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .invite .youare::before,
@@ -288,21 +263,24 @@ img {
 
 .invite p {
     line-height: 1.8;
-    margin: 0
+    margin: 0;
+    margin-bottom: 25px;
 }
 
 /* D-day 타이틀 */
 .dday-title {
     font-family: "Great Vibes", cursive;
     text-align: center;
-    font-size: 32px;
-    margin: 20px 0 8px
+    font-size: 30px;
+    margin: 40px 0 20px
 }
 
 /* 달력 */
 .calendar {
     background: var(--surface);
     margin: 0 0 16px;
+    align-items: center;
+    justify-content: center;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     border: 1px solid var(--line);
@@ -329,7 +307,7 @@ img {
 }
 
 .calendar .flatpickr-current-month {
-    font-family: "Nanum Myeongjo", serif
+    font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
 }
 
 .calendar .flatpickr-day.today {
@@ -397,7 +375,7 @@ img {
 }
 
 .map .title {
-    font-family: "Nanum Myeongjo", serif;
+    font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
     text-align: center;
     font-size: 18px;
     margin: 16px 0 8px

@@ -39,6 +39,12 @@ flatpickr('#calendar', {
   disableMobile: true,
   showMonths: 1,
   locale: 'ko',
+  onReady: function(selectedDates, dateStr, instance) {
+    // 모든 날짜 셀에 pointer-events 제거
+    instance.calendarContainer.querySelectorAll('.flatpickr-day').forEach(el => {
+      el.style.pointerEvents = 'none';
+    });
+  },
   onChange: function(selectedDates){
     if(selectedDates && selectedDates[0]){
       setTargetDate(selectedDates[0]);
