@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="모바일 초대장" />
+
+    <!-- Webfonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nanum+Myeongjo:wght@700&family=Great+Vibes&display=swap"
+        rel="stylesheet" />
+
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_purple.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/hykw.png" alt="커플 사진 1" /></div>
+            <div class="swiper-slide"><img src="images/hykw2.png" alt="커플 사진 2" /></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </section>
+    <div class="hero-names">
+        <div class="person">
+            <div class="ko">최경원</div>
+            <div class="en">CHOI KYOUNG WON</div>
+        </div>
+        <div class="and">and</div>
+        <div class="person">
+            <div class="ko">김해연</div>
+            <div class="en">GIM HAE YEON</div>
+        </div>
+    </div>
+    <div>
+        <div class="meta">11월 14일 금요일 오후 6시<br>강남 구스아일랜드 1층</div>
+    </div>
+
+    <!-- 초대 문구 (풀폭 띠) -->
+    <section class="invite" aria-label="invite">
+        <p class="youare">You are invited</p>
+        <p>
+            저희는 결혼식을 대신해<br />
+            작은 피로연을 준비했습니다.<br /><br />
+            귀한 발걸음 해주신다면<br />
+            더없이 감사한 마음으로<br />
+            함께 축하하는 시간을 보내고 싶습니다.
+        </p>
+    </section>
+
+    <div class="wrap">
+        <!-- D-day + 달력 -->
+        <div class="dday-title">D-day</div>
+        <section class="calendar card" aria-label="calendar">
+            <div class="in">
+                <div id="calendar" aria-label="달력"></div>
+            </div>
+        </section>
+
+        <!-- 카운트다운 -->
+        <section class="count card" aria-label="countdown">
+            <div class="flip-wrap" id="countdown">
+                <div class="flip">
+                    <div class="num" id="dd">00</div>
+                    <div class="lab">days</div>
+                </div>
+                <div class="flip">
+                    <div class="num" id="hh">00</div>
+                    <div class="lab">hours</div>
+                </div>
+                <div class="flip">
+                    <div class="num" id="mm">00</div>
+                    <div class="lab">minute</div>
+                </div>
+                <div class="flip">
+                    <div class="num" id="ss">00</div>
+                    <div class="lab">seconds</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 지도/네비게이션 (카드) -->
+    <section class="map" aria-label="map">
+        <div class="in">
+            <div class="title">오시는 길</div>
+            <div id="map" style="width:100%;height:300px;border-radius:12px"></div>
+        </div>
+        <div class="in">
+            <div class="hr"></div>
+            <div style="font-family:'Nanum Myeongjo', serif; font-size:18px; text-align:center; margin-bottom:8px">주차 안내
+            </div>
+            <p>주차는~~~</p>
+        </div>
+    </section>
+
+    <!-- 하단 고정 CTA -->
+    <div class="dock">
+        <a href="https://forms.gle/your_form" target="_blank" rel="noopener" class="btn" aria-label="참석여부 회신하기">
+            <span class="star" aria-hidden="true"></span>
+            참석여부 회신하기
+        </a>
+    </div>
+
+    <!-- Vendor scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0e1e71838c627fc0407cd4ac1ed31bf3"></script>
+
+    <!-- App script -->
+    <script src="assets/js/app.js" defer></script>
+</body>
+
+</html>

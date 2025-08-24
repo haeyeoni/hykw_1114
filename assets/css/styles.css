@@ -1,0 +1,453 @@
+:root {
+    --page: #efecf1;
+    --surface: #fff;
+    --ink: #222;
+    --muted: #6b7280;
+    --accent: #6f4ea1;
+    --accent-2: #c3a1ff;
+    --soft: #faeff3;
+    --line: #e8e3ee;
+    --radius: 22px;
+    --shadow: 0 10px 24px rgba(0, 0, 0, .06);
+    --maxw: 420px;
+    --hero-h-mobile: 100dvh;
+    /* 주소창 포함 안전한 전체 높이 */
+    --hero-h-desktop: 50vh;
+    /* 노트북/데스크탑에서 살짝 낮게 */
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: var(--page);
+    color: var(--ink);
+    font-family: "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+img {
+    max-width: 100%;
+    width: 100%;
+    display: block
+}
+
+.wrap {
+    max-width: var(--maxw);
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
+
+/* 공통 카드 */
+.card {
+    background: var(--surface);
+    width: 100%;
+    margin: 0 0 16px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    overflow: hidden
+}
+
+.in {
+    padding: 18px 16px
+}
+
+.divider {
+    height: 1px;
+    background: var(--line);
+    margin: 16px 0
+}
+
+/* 상단 Save the Date */
+.save {
+    padding: 18px 18px 0;
+    font-family: "Great Vibes", cursive;
+    font-size: 34px;
+    color: #000;
+    opacity: .9
+}
+
+/* 기본: 모바일은 꽉 차게(cover) */
+.hero-slider {
+    height: 100dvh;
+    position: relative;
+}
+
+.hero-slider .swiper-slide,
+.hero-slider .swiper-wrapper {
+    height: 100%;
+}
+
+.hero-slider .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 모바일은 화면 꽉 차게 */
+    display: block;
+}
+
+.hero-names {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    /* 두 이름 사이 간격 크게 */
+    margin-bottom: 12px;
+    margin-top: 24px;
+}
+
+.hero-names .person {
+    text-align: center;
+}
+
+.hero-names .ko {
+    font-family: "Nanum Myeongjo", serif;
+    font-size: 26px;
+    letter-spacing: .15rem;
+    margin-bottom: 4px;
+}
+
+.hero-names .and {
+    font-family: "Great Vibes", cursive;
+    font-size: 22px;
+    align-self: center;
+    opacity: .85;
+}
+
+.hero-names .en {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .12rem;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* 장소/날짜 meta 스타일 */
+.meta {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    /* 이름 묶음과 충분히 띄우기 */
+    line-height: 1.6;
+}
+
+/* Swiper 기본 쌓임 순서(참고) */
+.swiper-slide {
+    z-index: 1;
+}
+
+.swiper-button-prev,
+.swiper-button-next,
+.swiper-pagination {
+    z-index: 40;
+    bottom: 10px !important;
+}
+
+.hero-slider .names {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px 0
+}
+
+.hero-slider .ko {
+    font-family: "Nanum Myeongjo", serif;
+    font-size: 26px;
+    letter-spacing: .2rem;
+    text-align: center
+}
+
+.hero-slider .and {
+    font-family: "Great Vibes", cursive;
+    font-size: 20px;
+    color: #333;
+    opacity: .8
+}
+
+.hero-slider .en {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #555;
+    letter-spacing: .15rem;
+    text-align: center;
+    margin-top: 4px
+}
+
+.hero-slider .meta {
+    text-align: center;
+    font-size: 13px;
+    margin: 12px 0 16px
+}
+
+/* 컨테이너는 기준점 */
+.hero-slider {
+    position: relative;
+}
+
+/* Swiper 요소의 기본 쌓임 순서 보정(있으면) */
+.swiper-slide {
+    z-index: 1;
+}
+
+.swiper-button-prev,
+.swiper-button-next,
+.swiper-pagination {
+    z-index: 40;
+}
+
+/* Swiper arrows & pagination */
+.swiper-button-prev,
+.swiper-button-next {
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .5)
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 20px
+}
+
+.swiper-pagination-bullet {
+    background: rgba(255, 255, 255, .6);
+    opacity: 1
+}
+
+.swiper-pagination-bullet-active {
+    background: #fff
+}
+
+
+/* 데스크탑(>=1024px): 잘림 없이 전체 보이기 */
+@media (min-width: 1024px) {
+    .hero-slider {
+        height: 60vh;
+    }
+
+    /* 필요하면 50~70vh로 조절 */
+    .hero-slider .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--page);
+        /* 레터박스 배경(원하면 var(--page)로 변경) */
+    }
+
+    .hero-slider .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        /* 잘림 없이 전체 이미지 */
+        object-position: center center;
+        /* 중앙 정렬 */
+    }
+
+    .swiper-pagination {
+        bottom: 10px !important;
+    }
+}
+
+/* 초대 문구 띠(풀폭) */
+.invite {
+    width: 100%;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    padding: 32px 16px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 0
+}
+
+.invite .youare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: "Great Vibes", cursive;
+    font-size: 40px;
+    margin: 0 0 12px 0;
+    color: #000
+}
+
+.invite .youare::before,
+.invite .youare::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line)
+}
+
+.invite p {
+    line-height: 1.8;
+    margin: 0
+}
+
+/* D-day 타이틀 */
+.dday-title {
+    font-family: "Great Vibes", cursive;
+    text-align: center;
+    font-size: 32px;
+    margin: 20px 0 8px
+}
+
+/* 달력 */
+.calendar {
+    background: var(--surface);
+    margin: 0 0 16px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    overflow: hidden
+}
+
+.calendar .in {
+    padding: 0;
+    display: flex;
+    justify-content: center
+}
+
+.calendar .flatpickr-calendar {
+    border: none;
+    box-shadow: none;
+    border-radius: var(--radius);
+    width: auto !important;
+    margin: 0 auto
+}
+
+.calendar .flatpickr-months {
+    padding: 10px 6px;
+    text-align: center !important
+}
+
+.calendar .flatpickr-current-month {
+    font-family: "Nanum Myeongjo", serif
+}
+
+.calendar .flatpickr-day.today {
+    border-color: var(--accent)
+}
+
+.calendar .flatpickr-day {
+    display: flex !important;
+    align-items: center;
+    justify-content: center
+}
+
+.calendar .flatpickr-day.selected,
+.calendar .flatpickr-day.startRange,
+.calendar .flatpickr-day.endRange {
+    background: var(--accent);
+    border-color: var(--accent)
+}
+
+/* 카운트다운 */
+.count.card {
+    background: #2b2421 url('https://images.unsplash.com/photo-1473186578172-c141e6798cf4?q=80&w=1200&auto=format&fit=crop') center/cover;
+    color: #fff
+}
+
+.flip-wrap {
+    display: flex;
+    justify-content: space-around;
+    gap: 12px;
+    padding: 16px
+}
+
+.flip {
+    width: 72px;
+    text-align: center
+}
+
+.flip .num {
+    font-size: 28px;
+    font-weight: 700;
+    background: rgba(0, 0, 0, .45);
+    border-radius: 12px;
+    padding: 10px 0;
+    box-shadow: inset 0 -2px 0 rgba(255, 255, 255, .08)
+}
+
+.flip .lab {
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: .85
+}
+
+/* 지도 섹션 */
+
+/* 지도 띠(풀폭) */
+.map {
+    width: 100%;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    padding: 32px 16px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 0
+}
+
+.map .title {
+    font-family: "Nanum Myeongjo", serif;
+    text-align: center;
+    font-size: 18px;
+    margin: 16px 0 8px
+}
+
+.map p {
+    line-height: 1.8;
+    margin: 0
+}
+
+/* 하단 고정 버튼 */
+.dock {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, .95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line);
+    z-index: 50
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 48px;
+    border-radius: 999px;
+    background: #141414;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .2)
+}
+
+.btn .star {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: conic-gradient(from 0deg, #ffe082, #ffc107, #ff9800, #ffe082);
+    clip-path: path('M9 0 L11 6 H17 L12.5 9.5 L14.5 15 L9 11.5 L3.5 15 L5.5 9.5 L1 6 H7 Z')
+}
+
+.center {
+    text-align: center
+}
+
+.small {
+    font-size: 12px;
+    color: var(--muted)
+}
