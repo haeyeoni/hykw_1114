@@ -35,17 +35,19 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
+<audio id="bgm" src="music/bgm.mp3" autoplay loop preload="metadata"></audio>
+<button id="bgmBtn" aria-label="Toggle BGM">🎵</button>
+
 <body>
     <div class="hero">
         <!-- Hero Slider -->
+        <img src="images/love.gif" class="love-gif" alt="Love GIF" />
         <section class="hero-slider swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img src="images/hykw.png" alt="커플 사진 1" /></div>
                 <div class="swiper-slide"><img src="images/hykw2.png" alt="커플 사진 2" /></div>
             </div>
             <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
         </section>
 
         <div class="hero-names">
@@ -111,64 +113,55 @@
 
     <!-- 지도/네비게이션 (카드) -->
     <section class="map" aria-label="map">
-        <div class="in">
-            <div data-aos="fade-up">
-                <h3 class="title">오시는 길</h3>
-                <div id="map" style="width:100%;height:300px;border-radius:12px"></div>
-            </div>
+        <div class="in" data-aos="fade-up">
+            <h3 class="title">오시는 길</h3>
+            <div id="map" style="width:100%;height:300px;border-radius:12px"></div>
+
             <!-- 네비게이션 안내 -->
-            <div data-aos="fade-up">
-                <h3 class="nav-title">네비게이션</h3>
-                <p class="nav-desc">원하시는 앱을 선택하시면 길안내가 시작됩니다.</p>
+            <h3 class="title">네비게이션</h3>
+            <p class="nav-desc">원하시는 앱을 선택하시면 길안내가 시작됩니다.</p>
 
-                <div class="nav-apps">
-                    <a class="nav-btn"
-                        href="kakaomap://route?ep=37.4932767,127.0320207&by=CAR&name=%EA%B0%95%EB%82%A8%20%EA%B5%AC%EC%8A%A4%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C"
-                        target="_blank" rel="noopener">
-                        <span class="nav-ico" aria-hidden="true">
-                            <!-- KakaoMap 아이콘 -->
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2c5.5 0 10 3.8 10 8.6 0 4.8-4.5 8.6-10 8.6-.9 0-1.8-.1-2.6-.3L5 22l.9-3.4C3.9 17 2 14.9 2 10.6 2 5.8 6.5 2 12 2z"
-                                    fill="#fee500" />
-                            </svg>
-                        </span>
-                        <span class="nav-label">카카오맵</span>
-                    </a>
+            <div class="nav-apps">
+                <a class="nav-btn"
+                    href="kakaomap://route?ep=37.4932767,127.0320207&by=CAR&name=%EA%B0%95%EB%82%A8%20%EA%B5%AC%EC%8A%A4%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C"
+                    target="_blank" rel="noopener">
+                    <span class="nav-ico" aria-hidden="true">
+                        <img src="images/kakaomap.png" />
+                    </span>
+                    <span class="nav-label">카카오맵</span>
+                </a>
 
-                    <!-- 티맵 -->
-                    <a class="nav-btn"
-                        href="tmap://route?goalname=%EA%B0%95%EB%82%A8%20%EA%B5%AC%EC%8A%A4%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C&goalx=127.0320207&goaly=37.4932767"
-                        target="_blank" rel="noopener">
-                        <span class="nav-ico" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" fill="#2b6cff" />
-                                <path d="M7 13h10l-2 5H9l-2-5z" fill="#fff" />
-                            </svg>
-                        </span>
-                        <span class="nav-label">티맵</span>
-                    </a>
+                <!-- 티맵 -->
+                <a class="nav-btn"
+                    href="tmap://route?goalname=%EA%B0%95%EB%82%A8%20%EA%B5%AC%EC%8A%A4%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C&goalx=127.0320207&goaly=37.4932767"
+                    target="_blank" rel="noopener">
+                    <span class="nav-ico" aria-hidden="true">
+                        <img src="images/tmap.png" />
+                    </span>
+                    <span class="nav-label">티맵</span>
+                </a>
 
-                    <!-- 네이버지도 -->
-                    <a class="nav-btn"
-                        href="nmap://route/walk?dlat=37.4932767&dlng=127.0320207&dname=%EA%B0%95%EB%82%A8%20%EA%B5%AC%EC%8A%A4%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C"
-                        target="_blank" rel="noopener">
-                        <span class="nav-ico" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <rect width="24" height="24" rx="6" fill="#03c75a" />
-                                <path d="M7 17V7h3.5l3 4.7V7H17v10h-3.5L10.5 12V17H7z" fill="#fff" />
-                            </svg>
-                        </span>
-                        <span class="nav-label">네이버지도</span>
-                    </a>
-                </div>
+                <!-- 네이버지도 -->
+                <a class="nav-btn"
+                    href="nmap://route/walk?dlat=37.4932767&dlng=127.0320207&dname=%EA%B0%95%EB%82%A8%20%EA%B5%AC%EC%8A%A4%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C"
+                    target="_blank" rel="noopener">
+                    <span class="nav-ico" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <rect width="24" height="24" rx="6" fill="#03c75a" />
+                            <path d="M7 17V7h3.5l3 4.7V7H17v10h-3.5L10.5 12V17H7z" fill="#fff" />
+                        </svg>
+                    </span>
+                    <span class="nav-label">네이버지도</span>
+                </a>
             </div>
-        </div>
-        <div class="in">
-            <div class="hr"></div>
-            <div style="font-family:'Nanum Myeongjo', serif; font-size:18px; text-align:center; margin-bottom:8px">주차 안내
-            </div>
-            <p>주차는~~~</p>
+
+            <h3 class="title">버스안내</h3>
+            <p>지선 4312, 서초 09 역삼초등학교 정류장 하차</p>
+            <h3 class="title">지하철 안내</h3>
+            <p>강남역 신분당선 4번 출구에서 양재 방향 400m</p>
+            <h3 class="title">주차 안내</h3>
+            <p>주차 안내 글 <br><br><br><br></p>
+
         </div>
     </section>
 
@@ -189,8 +182,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 1000,   // 애니메이션 시간 (ms)
-            once: true        // 스크롤시 1번만 실행
+            duration: 1000,
+            once: false
         });
     </script>
 </body>

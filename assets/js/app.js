@@ -70,3 +70,55 @@ document.addEventListener('DOMContentLoaded', function(){
   const marker = new kakao.maps.Marker({ position: new kakao.maps.LatLng(VENUE.lat, VENUE.lng) });
   marker.setMap(map);
 });
+
+
+const audio = document.getElementById('bgm');
+const btn   = document.getElementById('bgmBtn');
+
+const saved = localStorage.getItem('bgm_on') === 'true';
+
+function setUI(){
+  btn.classList.toggle('playing', !audio.paused);
+  btn.textContent = audio.paused ? '🎵' : '🔇';
+}
+
+async function toggleBgm(){
+  if(audio.paused){
+    try{
+      await audio.play();
+      localStorage.setItem('bgm_on','true');
+    }catch(e){ console.log('Play blocked:', e); }
+  }else{
+    audio.pause();
+    localStorage.setItem('bgm_on','false');
+  }
+  setUI();
+}
+
+btn.addEventListener('click', toggleBgm);
+
+// 사용자 첫 터치/스크롤 시 자동 재생 복원
+const oneShotEnable = async () => {
+  if(saved){
+    try{ await audio.play(); }catch(e){}
+    setUI();
+  }
+  window.removeEventListener('pointerdown', oneShotEnable);
+  window.removeEventListener('touchstart', oneShotEnable);
+  window.removeEventListener('scroll', oneShotEnable);
+};
+window.addEventListener('pointerdown', oneShotEnable, {once:true});
+window.addEventListener('touchstart', oneShotEnable, {once:true, passive:true});
+window.addEventListener('scroll', oneShotEnable, {once:true, passive:true});
+
+setUI();
+
+// 재생 시 페이드인
+function fadeTo(vol=1, ms=600){
+  const start = audio.volume, steps=20;
+  let i=0; const t=setInterval(()=>{
+    i++; audio.volume=start+(vol-start)*(i/steps);
+    if(i>=steps) clearInterval(t);
+  }, ms/steps);
+}
+audio.addEventListener('play', ()=>{ audio.volume=0; fadeTo(1,700); });
