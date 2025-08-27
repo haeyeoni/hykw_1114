@@ -30,48 +30,54 @@
 
     <!-- App styles -->
     <link rel="stylesheet" href="assets/css/styles.css" />
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
+    <div class="hero">
+        <!-- Hero Slider -->
+        <section class="hero-slider swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/hykw.png" alt="커플 사진 1" /></div>
+                <div class="swiper-slide"><img src="images/hykw2.png" alt="커플 사진 2" /></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </section>
 
-    <!-- Hero Slider -->
-    <section class="hero-slider swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/hykw.png" alt="커플 사진 1" /></div>
-            <div class="swiper-slide"><img src="images/hykw2.png" alt="커플 사진 2" /></div>
+        <div class="hero-names">
+            <div class="person">
+                <div class="ko">최경원</div>
+                <div class="en">CHOI KYOUNG WON</div>
+            </div>
+            <div class="and">and</div>
+            <div class="person">
+                <div class="ko">김해연</div>
+                <div class="en">GIM HAE YEON</div>
+            </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </section>
-    <div class="hero-names">
-        <div class="person">
-            <div class="ko">최경원</div>
-            <div class="en">CHOI KYOUNG WON</div>
-        </div>
-        <div class="and">and</div>
-        <div class="person">
-            <div class="ko">김해연</div>
-            <div class="en">GIM HAE YEON</div>
+        <div>
+            <div class="meta">11월 14일 금요일 오후 6시<br>강남 구스아일랜드 1층</div>
         </div>
     </div>
-    <div>
-        <div class="meta">11월 14일 금요일 오후 6시<br>강남 구스아일랜드 1층</div>
-    </div>
-
     <!-- 초대 문구 (풀폭 띠) -->
-    <section class="invite" aria-label="invite">
-        <p class="youare">You are invited</p>
-        <p>
-            저희는 결혼식을 대신해<br />
-            작은 피로연을 준비했습니다.<br /><br />
-            귀한 발걸음 해주신다면<br />
-            더없이 감사한 마음으로<br />
-            함께 축하하는 시간을 보내고 싶습니다.
-        </p>
-    </section>
+    <div data-aos="fade-up">
+        <section class="invite" aria-label="invite">
+            <p class="youare">You are invited</p>
+            <p>
+                저희는 결혼식을 대신해<br />
+                작은 피로연을 준비했습니다.<br /><br />
+                귀한 발걸음 해주신다면<br />
+                더없이 감사한 마음으로<br />
+                함께 축하하는 시간을 보내고 싶습니다.
+            </p>
+        </section>
+    </div>
 
-    <div class="wrap">
+    <div class="wrap" data-aos="fade-up">
         <!-- D-day + 달력 -->
         <div class="dday-title">D-day</div>
         <section class="calendar card" aria-label="calendar">
@@ -85,19 +91,19 @@
             <div class="flip-wrap" id="countdown">
                 <div class="flip">
                     <div class="num" id="dd">00</div>
-                    <div class="lab">days</div>
+                    <div class="lab">Days</div>
                 </div>
                 <div class="flip">
                     <div class="num" id="hh">00</div>
-                    <div class="lab">hours</div>
+                    <div class="lab">Hours</div>
                 </div>
                 <div class="flip">
                     <div class="num" id="mm">00</div>
-                    <div class="lab">minute</div>
+                    <div class="lab">Minute</div>
                 </div>
                 <div class="flip">
                     <div class="num" id="ss">00</div>
-                    <div class="lab">seconds</div>
+                    <div class="lab">Seconds</div>
                 </div>
             </div>
         </section>
@@ -106,8 +112,57 @@
     <!-- 지도/네비게이션 (카드) -->
     <section class="map" aria-label="map">
         <div class="in">
-            <div class="title">오시는 길</div>
-            <div id="map" style="width:100%;height:300px;border-radius:12px"></div>
+            <div data-aos="fade-up">
+                <h3 class="title">오시는 길</h3>
+                <div id="map" style="width:100%;height:300px;border-radius:12px"></div>
+            </div>
+            <!-- 네비게이션 안내 -->
+            <div data-aos="fade-up">
+                <h3 class="nav-title">네비게이션</h3>
+                <p class="nav-desc">원하시는 앱을 선택하시면 길안내가 시작됩니다.</p>
+
+                <div class="nav-apps">
+                    <a class="nav-btn"
+                        href="kakaomap://route?ep=37.4932767,127.0320207&by=CAR&name=%EA%B0%95%EB%82%A8%20%EA%B5%AC%EC%8A%A4%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C"
+                        target="_blank" rel="noopener">
+                        <span class="nav-ico" aria-hidden="true">
+                            <!-- KakaoMap 아이콘 -->
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2c5.5 0 10 3.8 10 8.6 0 4.8-4.5 8.6-10 8.6-.9 0-1.8-.1-2.6-.3L5 22l.9-3.4C3.9 17 2 14.9 2 10.6 2 5.8 6.5 2 12 2z"
+                                    fill="#fee500" />
+                            </svg>
+                        </span>
+                        <span class="nav-label">카카오맵</span>
+                    </a>
+
+                    <!-- 티맵 -->
+                    <a class="nav-btn"
+                        href="tmap://route?goalname=%EA%B0%95%EB%82%A8%20%EA%B5%AC%EC%8A%A4%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C&goalx=127.0320207&goaly=37.4932767"
+                        target="_blank" rel="noopener">
+                        <span class="nav-ico" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" fill="#2b6cff" />
+                                <path d="M7 13h10l-2 5H9l-2-5z" fill="#fff" />
+                            </svg>
+                        </span>
+                        <span class="nav-label">티맵</span>
+                    </a>
+
+                    <!-- 네이버지도 -->
+                    <a class="nav-btn"
+                        href="nmap://route/walk?dlat=37.4932767&dlng=127.0320207&dname=%EA%B0%95%EB%82%A8%20%EA%B5%AC%EC%8A%A4%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C"
+                        target="_blank" rel="noopener">
+                        <span class="nav-ico" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <rect width="24" height="24" rx="6" fill="#03c75a" />
+                                <path d="M7 17V7h3.5l3 4.7V7H17v10h-3.5L10.5 12V17H7z" fill="#fff" />
+                            </svg>
+                        </span>
+                        <span class="nav-label">네이버지도</span>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="in">
             <div class="hr"></div>
@@ -130,8 +185,14 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0e1e71838c627fc0407cd4ac1ed31bf3"></script>
 
-    <!-- App script -->
     <script src="assets/js/app.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,   // 애니메이션 시간 (ms)
+            once: true        // 스크롤시 1번만 실행
+        });
+    </script>
 </body>
 
 </html>
