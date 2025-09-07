@@ -1,7 +1,7 @@
 // ===== Settings =====
 const INVITE_EVENT_ISO = '2025-11-14';             // D-day 날짜 (날짜 선택 기본값)
 const INVITE_EVENT_TIME = { h: 18, m: 0, s: 0 };   // 카운트다운 시간 (18:00)
-const VENUE = { lat: 37.504799, lng: 127.025493 }; // 강남 구스아일랜드 좌표
+const VENUE = { lat: 37.493402, lng: 127.032182 }; // 강남 구스아일랜드 좌표
 
 // ===== Countdown =====
 const dd = document.getElementById('dd');
@@ -62,13 +62,45 @@ new Swiper('.swiper', {
 
 // ===== Kakao Map =====
 document.addEventListener('DOMContentLoaded', function(){
-  if (typeof kakao === 'undefined' || !document.getElementById('map')) return;
-  const map = new kakao.maps.Map(document.getElementById('map'), {
-    center: new kakao.maps.LatLng(VENUE.lat, VENUE.lng),
-    level: 3
-  });
-  const marker = new kakao.maps.Marker({ position: new kakao.maps.LatLng(VENUE.lat, VENUE.lng) });
-  marker.setMap(map);
+  // 지도 초기화 함수
+  function initMap() {
+    if (typeof kakao === 'undefined' || !document.getElementById('map')) {
+      console.log('Kakao Maps API not loaded or map element not found');
+      return;
+    }
+    
+    try {
+      const mapContainer = document.getElementById('map');
+      const mapOption = {
+        center: new kakao.maps.LatLng(VENUE.lat, VENUE.lng),
+        level: 3
+      };
+      
+      const map = new kakao.maps.Map(mapContainer, mapOption);
+      const marker = new kakao.maps.Marker({ 
+        position: new kakao.maps.LatLng(VENUE.lat, VENUE.lng) 
+      });
+      marker.setMap(map);
+      
+      console.log('Map initialized successfully');
+    } catch (error) {
+      console.error('Map initialization error:', error);
+    }
+  }
+  
+  // 카카오맵 API 로드 확인 후 초기화
+  if (typeof kakao !== 'undefined') {
+    initMap();
+  } else {
+    // API가 아직 로드되지 않은 경우 잠시 후 재시도
+    setTimeout(() => {
+      if (typeof kakao !== 'undefined') {
+        initMap();
+      } else {
+        console.error('Kakao Maps API failed to load');
+      }
+    }, 1000);
+  }
 });
 
 

@@ -1,0 +1,310 @@
+/* RSVP 페이지 스타일 */
+.rsvp-container {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 20px;
+    background: var(--page);
+    min-height: 100vh;
+}
+
+.rsvp-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 32px 0;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+}
+
+.rsvp-title {
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-size: 24px;
+    margin: 0 0 12px;
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.rsvp-subtitle {
+    font-family: 'Gowun Dodum', "Great Vibes", cursive;
+    font-size: 20px;
+    margin: 0 0 10px;
+    color: var(--muted);
+}
+
+.rsvp-date {
+    font-size: 14px;
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.rsvp-form {
+    background: var(--surface);
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    margin-bottom: 20px;
+    transition: var(--transition);
+}
+
+.rsvp-form:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--ink);
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(228, 235, 163, 0.2);
+}
+
+.form-group textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--ink);
+}
+
+.radio-label input[type="radio"] {
+    margin: 0 8px 0 0;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent);
+}
+
+.radio-text {
+    font-weight: 400;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--count-down);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: #032a03;
+    transform: translateY(-1px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    background: var(--muted);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.success-message {
+    text-align: center;
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+    margin: 0 auto 20px;
+}
+
+.success-message h2 {
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-size: 20px;
+    margin: 0 0 10px;
+    color: var(--ink);
+}
+
+.success-message p {
+    color: var(--muted);
+    margin: 0 0 25px;
+    line-height: 1.6;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.back-btn:hover {
+    background: var(--accent-2);
+}
+
+/* RSVP 완료 모달 */
+.rsvp-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+
+.rsvp-modal[aria-hidden="false"] {
+    display: flex;
+}
+
+.rsvp-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .35);
+    backdrop-filter: blur(2px);
+}
+
+.rsvp-modal__dialog {
+    position: relative;
+    width: min(92vw, 380px);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-hover);
+    padding: 28px 22px;
+    text-align: center;
+}
+
+.rsvp-modal__close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.rsvp-modal__icon {
+    width: 60px;
+    height: 60px;
+    margin: 6px auto 14px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.rsvp-modal__title {
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-size: 18px;
+    margin: 0 0 8px;
+    color: var(--ink);
+}
+
+.rsvp-modal__desc {
+    margin: 0 0 20px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.rsvp-modal__ok {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 10px;
+    background: var(--count-down);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s ease, transform .1s ease;
+}
+
+.rsvp-modal__ok:hover {
+    background: #0b1f39;
+    transform: translateY(-1px);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+    .rsvp-container {
+        padding: 15px;
+    }
+
+    .rsvp-form {
+        padding: 20px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .rsvp-title {
+        font-size: 20px;
+    }
+
+    .rsvp-subtitle {
+        font-size: 18px;
+    }
+}

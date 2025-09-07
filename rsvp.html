@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="참석여부 회신" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="참석여부 회신 - 최경원 ❤️ 김해연" />
+    <meta property="og:description" content="참석여부를 회신해주세요" />
+
+    <!-- Webfonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum:wght@400&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/rsvp.css" />
+</head>
+
+<body>
+    <div class="rsvp-container">
+        <!-- 헤더 -->
+        <div class="rsvp-header">
+            <h1 class="rsvp-title">참석여부 회신</h1>
+            <p class="rsvp-subtitle">최경원 ❤️ 김해연</p>
+            <p class="rsvp-date">11월 14일 금요일 오후 6시</p>
+        </div>
+
+        <!-- 폼 -->
+        <form class="rsvp-form" id="rsvpForm">
+            <div class="form-group">
+                <label for="name">이름 *</label>
+                <input type="text" id="name" name="name" required placeholder="성함을 입력해주세요">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">전화번호 *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="010-0000-0000">
+            </div>
+
+            <div class="form-group">
+                <label for="side">측별 선택 *</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="side" value="bride" required>
+                        <span class="radio-text">신부측</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="side" value="groom" required>
+                        <span class="radio-text">신랑측</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="attendance">참석여부 *</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="yes" required>
+                        <span class="radio-text">참석합니다</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="no" required>
+                        <span class="radio-text">참석하지 않습니다</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">메시지 (선택사항)</label>
+                <textarea id="message" name="message" placeholder="축하 메시지나 전달하고 싶은 말씀이 있으시면 적어주세요"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">회신하기</button>
+        </form>
+
+        <!-- 성공 메시지 -->
+        <div class="success-message" id="successMessage" style="display: none;">
+            <div class="success-icon">✓</div>
+            <h2>회신이 완료되었습니다!</h2>
+            <p>소중한 시간을 내어 회신해주셔서 감사합니다.</p>
+            <a href="index.html" class="back-btn">초대장으로 돌아가기</a>
+        </div>
+
+        <!-- RSVP 완료 모달 -->
+        <div id="rsvpModal" class="rsvp-modal" aria-hidden="true" role="dialog" aria-labelledby="rsvpModalTitle"
+            aria-modal="true" style="display:none;">
+            <div class="rsvp-modal__backdrop" data-close-modal></div>
+            <div class="rsvp-modal__dialog">
+                <button class="rsvp-modal__close" type="button" aria-label="닫기" data-close-modal>×</button>
+                <div class="rsvp-modal__icon">✓</div>
+                <h2 id="rsvpModalTitle" class="rsvp-modal__title">회신이 완료되었습니다</h2>
+                <p class="rsvp-modal__desc">응답해 주셔서 감사합니다. 참석 정보를 잘 받았습니다.</p>
+                <button class="rsvp-modal__ok" type="button" data-close-modal>확인</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/rsvp.js"></script>
+</body>
+
+</html>

@@ -15,11 +15,8 @@
     <!-- Webfonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nanum+Myeongjo:wght@700&family=Great+Vibes&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum:wght@400&family=Great+Vibes&display=swap"
+        rel="stylesheet">
 
     <!-- Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_purple.css" />
@@ -36,16 +33,20 @@
 </head>
 
 <audio id="bgm" src="music/bgm.mp3" autoplay loop preload="metadata"></audio>
-<button id="bgmBtn" aria-label="Toggle BGM">🎵</button>
+<button id="bgmBtn" aria-label="Toggle BGM">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path fill="currentColor"
+            d="M4 9v6h3.5l4 3V6l-4 3H4zm12.5 3a3.5 3.5 0 0 0-2.1-3.2v6.4c1.26-.52 2.1-1.76 2.1-3.2zm-2.1-7.9v2.1c2.9.73 5 3.34 5 6.3s-2.1 5.57-5 6.3v2.1c4.05-.8 7-4.38 7-8.4s-2.95-7.6-7-8.4z" />
+    </svg>
+</button>
 
 <body>
     <div class="hero">
         <!-- Hero Slider -->
-        <img src="images/love.gif" class="love-gif" alt="Love GIF" />
         <section class="hero-slider swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="images/hykw.png" alt="커플 사진 1" /></div>
-                <div class="swiper-slide"><img src="images/hykw2.png" alt="커플 사진 2" /></div>
+                <div class="swiper-slide"><img src="images/hykw.jpg" alt="커플 사진 1" /></div>
+                <div class="swiper-slide"><img src="images/hykw2.jpg" alt="커플 사진 2" /></div>
             </div>
             <div class="swiper-pagination"></div>
         </section>
@@ -76,6 +77,18 @@
                 더없이 감사한 마음으로<br />
                 함께 축하하는 시간을 보내고 싶습니다.
             </p>
+            <div class="invite-divider"></div>
+            <p>
+                파티의 전체적인 분위기를 위해 드레스 코드를 맞춰서 입고 와주세요.<br />
+                <strong> 드레스 코드는 블랙입니다. 😊</strong>
+            </p>
+            <p class="rsvp-notice">
+                원활한 진행을 위해<br />
+                참석여부를 꼭 회신해주세요!
+            </p>
+            <div class="invite-photo">
+                <img src="images/hykw3.jpg" alt="커플 사진" />
+            </div>
         </section>
     </div>
 
@@ -115,7 +128,7 @@
     <section class="map" aria-label="map">
         <div class="in" data-aos="fade-up">
             <h3 class="title">오시는 길</h3>
-            <div id="map" style="width:100%;height:300px;border-radius:12px"></div>
+            <div id="map"></div>
 
             <!-- 네비게이션 안내 -->
             <h3 class="title">네비게이션</h3>
@@ -158,7 +171,7 @@
             <h3 class="title">버스안내</h3>
             <p>지선 4312, 서초 09 역삼초등학교 정류장 하차</p>
             <h3 class="title">지하철 안내</h3>
-            <p>강남역 신분당선 4번 출구에서 양재 방향 400m</p>
+            <p>강남역 4번 출구 양재 방향 400m 도보 8분</p>
             <h3 class="title">주차 안내</h3>
             <p>주차 안내 글 <br><br><br><br></p>
 
@@ -167,7 +180,7 @@
 
     <!-- 하단 고정 CTA -->
     <div class="dock">
-        <a href="https://forms.gle/your_form" target="_blank" rel="noopener" class="btn" aria-label="참석여부 회신하기">
+        <a href="rsvp.html" target="_blank" rel="noopener" class="btn" aria-label="참석여부 회신하기">
             <span class="star" aria-hidden="true"></span>
             참석여부 회신하기
         </a>
@@ -176,7 +189,7 @@
     <!-- Vendor scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0e1e71838c627fc0407cd4ac1ed31bf3"></script>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0e1e71838c627fc0407cd4ac1ed31bf3&autoload=false"></script>
 
     <script src="assets/js/app.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

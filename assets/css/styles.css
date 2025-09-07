@@ -1,20 +1,20 @@
 :root {
-    --page: #e2e6d8;
-    --surface: #fff;
-    --ink: #222;
-    --muted: #6b7280;
-    --accent: #e4eba3;
-    --accent-2: #b8e68c;
-    --count-down: #043506;
-    --soft: #faeff3;
-    --line: #e8e3ee;
-    --radius: 22px;
-    --shadow: 0 10px 24px rgba(0, 0, 0, .06);
+    --page: #f6f8fb;
+    --surface: #ffffff;
+    --ink: #1f2633;
+    --muted: #64748b;
+    --accent: #8aa4d6;
+    --accent-2: #5b7bbd;
+    --count-down: #0f2747;
+    --soft: #eef3fb;
+    --line: #e4e8f0;
+    --radius: 16px;
+    --shadow: 0 8px 20px rgba(15, 39, 71, 0.08);
+    --shadow-hover: 0 12px 28px rgba(15, 39, 71, 0.12);
     --maxw: 420px;
     --hero-h-mobile: 100dvh;
-    /* 주소창 포함 안전한 전체 높이 */
     --hero-h-desktop: 50vh;
-    /* 노트북/데스크탑에서 살짝 낮게 */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @font-face {
@@ -32,14 +32,16 @@ body {
     width: 100%;
     background: var(--page);
     color: var(--ink);
-    font-family: "Nanum Myeongjo", "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-family: "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
     overflow-x: hidden;
 }
 
 img {
     max-width: 100%;
     width: 100%;
-    display: block
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 .wrap {
@@ -53,11 +55,17 @@ img {
 .card {
     background: var(--surface);
     width: 100%;
-    margin: 0 0 16px;
+    margin: 0 0 20px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     border: 1px solid var(--line);
-    overflow: hidden
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-1px);
 }
 
 .in {
@@ -89,7 +97,7 @@ img {
 
 /* 기본: 모바일은 꽉 차게(cover) */
 .hero-slider {
-    /* height: 100dvh; */
+    height: 85vh;
     position: relative;
     max-width: var(--maxw);
     margin: 0 auto;
@@ -105,7 +113,6 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* 모바일은 화면 꽉 차게 */
     display: block;
     box-sizing: border-box;
 }
@@ -125,7 +132,7 @@ img {
 }
 
 .hero-names .ko {
-    font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
     font-size: 26px;
     letter-spacing: .15rem;
     margin-bottom: 4px;
@@ -210,7 +217,7 @@ img {
 /* 데스크탑(>=1024px): 잘림 없이 전체 보이기 */
 @media (min-width: 1024px) {
     .hero-slider {
-        height: 60vh;
+        height: 70vh;
     }
 
     /* 필요하면 50~70vh로 조절 */
@@ -224,7 +231,7 @@ img {
     .hero-slider .swiper-slide img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         object-position: center center;
     }
 
@@ -236,8 +243,8 @@ img {
 /* 초대 문구 띠(풀폭) */
 .invite {
     width: 100%;
-    background: #fff;
-    color: #000;
+    background: var(--surface);
+    color: var(--ink);
     text-align: center;
     padding: 0px 0px;
     border-top: 1px solid var(--line);
@@ -249,13 +256,14 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 16px;
     font-family: "Great Vibes", cursive;
-    font-size: 30px;
-    margin: 0 0 12px 0;
-    color: #000;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    font-size: 28px;
+    margin: 0 0 16px 0;
+    color: var(--ink);
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-weight: 400;
 }
 
 .invite .youare::before,
@@ -267,9 +275,127 @@ img {
 }
 
 .invite p {
-    line-height: 1.8;
+    line-height: 1.7;
     margin: 0;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
+    font-size: 15px;
+    color: var(--ink);
+}
+
+.invite-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+    margin: 28px auto;
+    width: 80px;
+    position: relative;
+}
+
+.invite-divider::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+.invite-divider::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--accent-2);
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.invite-photo {
+    padding: 0;
+}
+
+.invite-photo img {
+    width: 100%;
+    max-width: 80%;
+    max-height: 45vh;
+    height: auto;
+    border-radius: 0;
+    /* remove rounded corners */
+    box-shadow: none;
+    /* remove shadow frame */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 30px;
+}
+
+@media (max-width: 480px) {
+    .invite-photo img {
+        max-width: 82%;
+        max-height: 35vh;
+    }
+}
+
+.rsvp-notice {
+    text-align: center;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.6;
+    display: inline-block;
+    padding: 12px 16px;
+    background: #f6f2ff;
+    /* lighter soft purple */
+    border: 1px solid #e8e1ff;
+    /* lighter purple border */
+    border-radius: 0;
+    /* square corners */
+    box-shadow: 0 10px 18px rgba(15, 39, 71, 0.10);
+    position: relative;
+    margin: 40px auto 32px;
+    /* pushed further below the photo */
+    font-weight: 600;
+}
+
+.rsvp-notice::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 70px;
+    height: 16px;
+    background: rgba(238, 237, 239, 0.8);
+    /* lighter than post-it */
+    border-radius: 0;
+    /* square corners */
+}
+
+/* realistic drop shadow layer under post-it */
+.rsvp-notice::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: -10px;
+    height: 16px;
+    background: transparent;
+    box-shadow: 0 18px 20px rgba(0, 0, 0, 0.12);
+    transform: rotate(-1.2deg);
+    z-index: -1;
+    pointer-events: none;
+}
+
+@media (max-width: 480px) {
+    .rsvp-notice {
+        font-size: 13px;
+        padding: 10px 14px;
+        margin: 34px auto 26px;
+        /* also increase spacing on mobile */
+    }
 }
 
 /* D-day 타이틀 */
@@ -313,7 +439,7 @@ img {
 }
 
 .calendar .flatpickr-current-month {
-    font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
 }
 
 .calendar .flatpickr-day.today {
@@ -367,28 +493,100 @@ img {
     opacity: .85
 }
 
-/* 지도 섹션 */
-
-/* 지도 띠(풀폭) */
-.map {
+/* 파티 안내 섹션 */
+.party-info {
     width: 100%;
     background: #fff;
     color: #000;
     text-align: center;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
+    margin: 0;
 }
 
-.map .title {
-    font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
+.party-info .title {
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
     text-align: center;
     font-size: 18px;
     margin: 16px 0 8px;
 }
 
-.map p {
+.party-content {
+    padding: 0 20px 20px;
+}
+
+.party-concept {
     line-height: 1.8;
-    margin: 0
+    margin: 0 0 20px;
+    font-size: 14px;
+}
+
+.dress-code {
+    background: var(--soft);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    border: 1px solid var(--line);
+}
+
+.dress-code h4 {
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-size: 16px;
+    margin: 0 0 8px;
+    color: var(--ink);
+}
+
+.dress-info {
+    line-height: 1.6;
+    margin: 0;
+    font-size: 13px;
+}
+
+.dress-info strong {
+    font-size: 16px;
+    color: var(--count-down);
+}
+
+/* 지도 섹션 */
+
+/* 지도 띠(풀폭) */
+.map {
+    width: 100%;
+    background: var(--surface);
+    color: var(--ink);
+    text-align: center;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.map .title {
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0 12px;
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.map p {
+    line-height: 1.7;
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: var(--ink);
+}
+
+#map {
+    width: 100% !important;
+    height: 300px !important;
+    border-radius: 12px;
+    min-height: 250px;
+}
+
+@media (max-width: 480px) {
+    #map {
+        height: 250px !important;
+        min-height: 200px;
+    }
 }
 
 /* 하단 고정 버튼 */
@@ -408,12 +606,27 @@ img {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    height: 48px;
-    border-radius: 999px;
-    background: #141414;
+    height: 52px;
+    border-radius: var(--radius);
+    background: var(--count-down);
     color: #fff;
-    font-weight: 700;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, .2)
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #0b1f39;
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
 }
 
 .btn .star {
@@ -449,7 +662,7 @@ img {
 .nav-apps {
     display: flex;
     gap: 10px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: stretch;
     margin-bottom: 50px;
     margin-top: 10px;
@@ -459,6 +672,7 @@ img {
     flex: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding: 10px 12px;
     border-radius: 12px;
@@ -514,20 +728,28 @@ img {
     height: 42px;
     border: none;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(15, 39, 71, 0.45);
     color: #fff;
-    font-size: 24px;
     cursor: pointer;
     box-shadow: 0 8px 16px rgba(0, 0, 0, .25);
     backdrop-filter: blur(6px);
-    transition: transform 0.3s ease, background 0.3s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bgmBtn svg {
+    display: block;
+    width: 20px;
+    height: 20px;
 }
 
 #bgmBtn.playing {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(15, 39, 71, 0.6);
     transform: scale(1.05);
 }
 
 #bgmBtn:hover {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
