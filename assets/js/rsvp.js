@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Modal refs
     const modal = document.getElementById('rsvpModal');
-    const closeEls = () => modal ? modal.querySelectorAll('[data-close-modal]') : [];
     function openModal(){ if(modal){ modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); } }
     function closeModal(){ if(modal){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); } }
 
@@ -24,50 +23,19 @@ document.addEventListener('DOMContentLoaded', function() {
         e.target.value = value;
     });
 
-    // 폼 제출 처리
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // 버튼 비활성화
+    // 폼 제출 처리 (fetch → 제거, UI만 제어)
+    form.addEventListener('submit', function() {
         submitBtn.disabled = true;
         submitBtn.textContent = '처리중...';
-        
-        // 폼 데이터 수집
-        const formData = new FormData(form);
-        const data = {
-            name: formData.get('name'),
-            phone: formData.get('phone'),
-            side: formData.get('side'),
-            attendance: formData.get('attendance'),
-            message: formData.get('message') || '',
-            timestamp: new Date().toISOString()
-        };
-        
-        try {
-            // ===== 여기 URL을 본인 Google Apps Script / Formspree 엔드포인트로 변경하세요 =====
-            const endpoint = "https://script.google.com/macros/s/AKfycbyhERCiNvs9611tgWsKaqhdHKT07PKwWHcRbgp7mT9f8-WoH9wXWNJuuwqGS_ifjzCv/exec";
-            
-            const res = await fetch(endpoint, {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
 
-            if (res.ok) {
-                form.style.display = 'none';
-                successMessage.style.display = 'block';
-                successMessage.scrollIntoView({ behavior: 'smooth' });
-                openModal();
-            } else {
-                throw new Error("서버 응답 오류");
-            }
-
-        } catch (error) {
-            console.error('데이터 저장 중 오류:', error);
-            alert('회신 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
-            submitBtn.disabled = false;
-            submitBtn.textContent = '회신하기';
-        }
+        // 폼 action으로 전송은 브라우저가 자동 처리
+        // 우리는 UX만 제어
+        setTimeout(() => {
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            openModal();
+        }, 600);
     });
     
     // 모달 닫기 바인딩

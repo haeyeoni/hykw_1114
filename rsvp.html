@@ -31,7 +31,10 @@
         </div>
 
         <!-- 폼 -->
-        <form class="rsvp-form" id="rsvpForm">
+        <form class="rsvp-form" id="rsvpForm"
+            action="https://script.google.com/macros/s/AKfycbyhERCiNvs9611tgWsKaqhdHKT07PKwWHcRbgp7mT9f8-WoH9wXWNJuuwqGS_ifjzCv/exec"
+            method="POST" target="hidden_iframe">
+
             <div class="form-group">
                 <label for="name">이름 *</label>
                 <input type="text" id="name" name="name" required placeholder="성함을 입력해주세요">
@@ -78,6 +81,9 @@
             <button type="submit" class="submit-btn">회신하기</button>
         </form>
 
+        <!-- 숨겨진 iframe (응답 처리용) -->
+        <iframe name="hidden_iframe" style="display:none;"></iframe>
+
         <!-- 성공 메시지 -->
         <div class="success-message" id="successMessage" style="display: none;">
             <div class="success-icon">✓</div>
@@ -100,7 +106,38 @@
         </div>
     </div>
 
-    <script src="assets/js/rsvp.js"></script>
+    <script>
+        // 간단한 UI 처리만 담당 (fetch 불필요)
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('rsvpForm');
+            const successMessage = document.getElementById('successMessage');
+            const submitBtn = form.querySelector('.submit-btn');
+            const modal = document.getElementById('rsvpModal');
+
+            form.addEventListener('submit', function () {
+                submitBtn.disabled = true;
+                submitBtn.textContent = '처리중...';
+
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                    if (modal) {
+                        modal.style.display = 'flex';
+                        modal.setAttribute('aria-hidden', 'false');
+                    }
+                }, 600);
+            });
+
+            // ESC 키로 모달 닫기
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && modal) {
+                    modal.style.display = 'none';
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
