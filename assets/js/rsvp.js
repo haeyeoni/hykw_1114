@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // 폼 제출 처리
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         // 버튼 비활성화
@@ -44,17 +44,24 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         try {
-            let existingData = JSON.parse(localStorage.getItem('rsvpData') || '[]');
-            existingData.push(data);
-            localStorage.setItem('rsvpData', JSON.stringify(existingData));
+            // ===== 여기 URL을 본인 Google Apps Script / Formspree 엔드포인트로 변경하세요 =====
+            const endpoint = "https://script.google.com/macros/s/AKfycbyhERCiNvs9611tgWsKaqhdHKT07PKwWHcRbgp7mT9f8-WoH9wXWNJuuwqGS_ifjzCv/exec";
             
-            setTimeout(() => {
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+
+            if (res.ok) {
                 form.style.display = 'none';
                 successMessage.style.display = 'block';
                 successMessage.scrollIntoView({ behavior: 'smooth' });
                 openModal();
-            }, 400);
-            
+            } else {
+                throw new Error("서버 응답 오류");
+            }
+
         } catch (error) {
             console.error('데이터 저장 중 오류:', error);
             alert('회신 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
