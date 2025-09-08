@@ -1,7 +1,7 @@
 // ===== Settings =====
 const INVITE_EVENT_ISO = '2025-11-14';             // D-day 날짜 (날짜 선택 기본값)
 const INVITE_EVENT_TIME = { h: 18, m: 0, s: 0 };   // 카운트다운 시간 (18:00)
-const VENUE = { lat: 37.493402, lng: 127.032182 }; // 강남 구스아일랜드 좌표
+const VENUE = { lat: 37.493310, lng: 127.032314 }; // 강남 구스아일랜드 좌표
 
 // ===== Countdown =====
 const dd = document.getElementById('dd');
@@ -60,49 +60,43 @@ new Swiper('.swiper', {
   navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
 });
 
-// ===== Kakao Map =====
-document.addEventListener('DOMContentLoaded', function(){
-  // 지도 초기화 함수
-  function initMap() {
-    if (typeof kakao === 'undefined' || !document.getElementById('map')) {
-      console.log('Kakao Maps API not loaded or map element not found');
-      return;
+// 1) SDK를 동적으로 로드(이미 있는 경우 재사용)
+function loadKakaoSdk() {
+  return new Promise((resolve, reject) => {
+    if (window.kakao && window.kakao.maps && kakao.maps.load) {
+      // SDK 스크립트가 로드된 상태 -> maps.load로 초기화
+      return kakao.maps.load(resolve);
     }
-    
-    try {
-      const mapContainer = document.getElementById('map');
-      const mapOption = {
-        center: new kakao.maps.LatLng(VENUE.lat, VENUE.lng),
-        level: 3
-      };
-      
-      const map = new kakao.maps.Map(mapContainer, mapOption);
-      const marker = new kakao.maps.Marker({ 
-        position: new kakao.maps.LatLng(VENUE.lat, VENUE.lng) 
-      });
-      marker.setMap(map);
-      
-      console.log('Map initialized successfully');
-    } catch (error) {
-      console.error('Map initialization error:', error);
-    }
+    const s = document.createElement('script');
+    s.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=0e1e71838c627fc0407cd4ac1ed31bf3&autoload=false';
+    s.onload = () => kakao.maps.load(resolve);
+    s.onerror = () => reject(new Error('Kakao SDK failed to load'));
+    document.head.appendChild(s);
+  });
+}
+
+function initMap() {
+  const el = document.getElementById('map');
+  if (!el) {
+    console.error('#map element not found');
+    return;
   }
-  
-  // 카카오맵 API 로드 확인 후 초기화
-  if (typeof kakao !== 'undefined') {
+  // 숫자 보장(문자열이면 Number(...)로 변환)
+  const center = new kakao.maps.LatLng(Number(VENUE.lat), Number(VENUE.lng));
+  const map = new kakao.maps.Map(el, { center, level: 3 });
+  new kakao.maps.Marker({ position: center, map });
+  console.log('Map initialized');
+}
+
+// DOM 준비 후 SDK 확실히 초기화 -> 지도 생성
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await loadKakaoSdk();
     initMap();
-  } else {
-    // API가 아직 로드되지 않은 경우 잠시 후 재시도
-    setTimeout(() => {
-      if (typeof kakao !== 'undefined') {
-        initMap();
-      } else {
-        console.error('Kakao Maps API failed to load');
-      }
-    }, 1000);
+  } catch (e) {
+    console.error('Kakao Maps API failed to load:', e);
   }
 });
-
 
 const audio = document.getElementById('bgm');
 const btn   = document.getElementById('bgmBtn');
