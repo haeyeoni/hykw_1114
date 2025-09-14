@@ -50,7 +50,9 @@ flatpickr('#calendar', {
       setTargetDate(selectedDates[0]);
       tick();
     }
-  }
+  },
+  minDate: '2025-11-01',
+  maxDate: '2025-11-30'
 });
 
 // ===== Swiper =====

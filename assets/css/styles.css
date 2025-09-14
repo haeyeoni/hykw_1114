@@ -433,6 +433,18 @@ img {
     margin-bottom: 30px;
 }
 
+.calendar::before,
+.calendar::after {
+    display: none !important;
+    content: none !important;
+}
+
+.flatpickr-calendar::before,
+.flatpickr-calendar::after {
+    display: none !important;
+    content: none !important;
+}
+
 .calendar .flatpickr-months {
     padding: 10px 6px;
     text-align: center !important

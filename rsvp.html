@@ -32,7 +32,7 @@
 
         <!-- 폼 -->
         <form class="rsvp-form" id="rsvpForm"
-            action="https://script.google.com/macros/s/AKfycbzZTsiaYli3qbyQE0XL4SHZJt-qnXknK54rV9ZKtXi9W5GeglbvuNlBlHB8pwiqavUy/exec"
+            action="https://script.google.com/macros/s/AKfycbwXvRuPacDLMs75dJ1sUQ5GyJSkaz6P_CYtggZ3bekWEFKF4TsS94yDVsh2wVfgLvg/exec"
             method="POST" target="hidden_iframe">
 
             <div class="form-group">
@@ -46,7 +46,7 @@
             </div>
 
             <div class="form-group">
-                <span class="group-label">측별 선택 *</span>
+                <span class="group-label">구분 *</span>
                 <div class="radio-group">
                     <label class="radio-label" for="sideBride">
                         <input type="radio" id="sideBride" name="side" value="bride" required>
@@ -71,6 +71,10 @@
                         <span class="radio-text">참석하지 않습니다</span>
                     </label>
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="partner">추가 인원 *</label>
+                <input type="text" id="partner" name="partner" required placeholder="추가 동행인 인원을 적어주세요. (없다면 0명) ">
             </div>
 
             <div class="form-group">
