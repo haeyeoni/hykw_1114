@@ -150,3 +150,76 @@ function fadeTo(vol=1, ms=600){
   }, ms/steps);
 }
 audio.addEventListener('play', ()=>{ audio.volume=0; fadeTo(1,700); });
+
+
+    
+AOS.init({
+    duration: 1000,
+    once: false
+});
+(function () {
+    const toastEl = document.getElementById('gift-toast');
+    let toastTimer;
+    function showToast(msg) {
+        clearTimeout(toastTimer);
+        toastEl.textContent = msg;
+        toastEl.classList.add('is-show');
+        if (navigator.vibrate) navigator.vibrate(10);
+        toastTimer = setTimeout(() => toastEl.classList.remove('is-show'), 1800);
+    }
+
+    async function copyText(text) {
+        try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; } } catch (e) { }
+        try {
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.readOnly = true; ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+            const ok = document.execCommand('copy'); ta.remove(); if (ok) return true;
+        } catch (e) { }
+        try {
+            const div = document.createElement('div');
+            div.contentEditable = 'true'; div.style.position = 'fixed'; div.style.top = '-1000px'; div.textContent = text;
+            document.body.appendChild(div); const sel = window.getSelection(); const range = document.createRange();
+            range.selectNodeContents(div); sel.removeAllRanges(); sel.addRange(range);
+            const ok = document.execCommand('copy'); sel.removeAllRanges(); div.remove(); if (ok) return true;
+        } catch (e) { }
+        return false;
+    }
+
+    function onClick(e) {
+        const btn = e.target.closest('.btn-copy');
+        if (!btn) return;
+        e.preventDefault(); e.stopPropagation();
+        const text = btn.dataset.copy || '';
+        if (!text) return;
+        copyText(text).then(ok => showToast(ok ? '계좌번호가 복사되었어요' : '복사가 막혀 있어요. 길게 눌러 복사해 주세요'));
+    }
+
+    document.addEventListener('click', onClick, { passive: false });
+    document.addEventListener('touchend', onClick, { passive: false });
+})();
+(function () {
+    const LEAD_OFFSET_PX = 20; // 이미지가 배지보다 살짝 먼저 시작하도록 하는 오프셋
+    function adjustTimelineAlignment() {
+        const items = document.querySelectorAll('.timeline__item');
+        items.forEach((item) => {
+            const badge = item.querySelector('.timeline__text .badge');
+            const media = item.querySelector('.timeline__media');
+            if (!badge || !media) return;
+            // reset before measuring
+            media.style.marginTop = '0px';
+            const itemTop = item.getBoundingClientRect().top;
+            const badgeTop = badge.getBoundingClientRect().top;
+            const mediaTop = media.getBoundingClientRect().top;
+            const delta = Math.round(badgeTop - itemTop - (mediaTop - itemTop));
+            // 이미지가 배지보다 LEAD_OFFSET_PX 만큼 위에서 시작되도록 보정
+            const adjusted = delta - LEAD_OFFSET_PX;
+            if (adjusted !== 0) {
+                media.style.marginTop = `${adjusted}px`;
+            }
+        });
+    }
+    window.addEventListener('load', adjustTimelineAlignment);
+    window.addEventListener('resize', () => { requestAnimationFrame(adjustTimelineAlignment); });
+    document.addEventListener('DOMContentLoaded', adjustTimelineAlignment);
+})();
