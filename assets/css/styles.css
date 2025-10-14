@@ -48,7 +48,7 @@ img {
     max-width: var(--maxw);
     width: 100%;
     margin: 0 auto;
-    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+    margin-bottom: 50px;
 }
 
 
@@ -247,6 +247,7 @@ img {
     color: var(--ink);
     text-align: center;
     padding: 0px 0px;
+    padding-bottom: 50px;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     margin: 0;
@@ -482,12 +483,12 @@ img {
     display: flex;
     justify-content: space-around;
     gap: 12px;
-    padding: 16px
+    padding: 16px;
 }
 
 .flip {
     width: 72px;
-    text-align: center
+    text-align: center;
 }
 
 .flip .num {
@@ -541,9 +542,23 @@ img {
     border: 1px solid var(--line);
 }
 
-.dress-code h4 {
+.dress-code {
     font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
     font-size: 16px;
+    margin: 0 0 8px;
+    color: var(--ink);
+}
+
+p {
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-size: 12px;
+    margin: 0 0 8px;
+    color: var(--ink);
+}
+
+h4 {
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-size: 14px;
     margin: 0 0 8px;
     color: var(--ink);
 }
@@ -773,7 +788,11 @@ img {
     padding: 0 16px
 }
 
-.gift-title {
+.gift-accordion p {
+    font-size: 14px;
+}
+
+.gift-accordion title {
     margin: 0 0 4px;
     text-align: center;
     font-size: 18px;
@@ -1694,13 +1713,16 @@ img {
     margin: 64px auto;
     padding: 0 16px;
     max-width: 980px;
+
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .timeline__line {
     position: absolute;
     left: 50%;
-    top: 0;
-    bottom: 0;
+    top: -20px;
+    bottom: 40px;
     width: 2px;
     background: #e5e7eb;
     /* light-gray center line */
