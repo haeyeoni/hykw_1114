@@ -1,5 +1,5 @@
 // ===== Settings =====
-const INVITE_EVENT_ISO = '2025-11-14';             // D-day 날짜 (날짜 선택 기본값)
+const INVITE_EVENT_ISO = '2026-11-14';             // D-day 날짜 (날짜 선택 기본값)
 const INVITE_EVENT_TIME = { h: 19, m: 0, s: 0 };   // 카운트다운 시간 (18:00)
 const VENUE = { lat: 37.493310, lng: 127.032314 }; // 강남 구스아일랜드 좌표
 
@@ -51,8 +51,8 @@ flatpickr('#calendar', {
       tick();
     }
   },
-  minDate: '2025-11-01',
-  maxDate: '2025-11-30'
+  minDate: '2026-11-01',
+  maxDate: '2026-11-30'
 });
 
 // ===== Swiper =====
